@@ -1,10 +1,99 @@
-﻿/* 폰트 로드 */
+﻿/*
+ * ========================================
+ *                폰트 설정
+ *
+ *  폰트 URL과 폰트명을 변경 하시면 됩니다.
+ * ========================================
+*/
 
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url(https://cdn.rawgit.com/HelloWorld017/NanumBarunGothic/master/nanumbarungothic.css);
 
+
+/* ====== 전체 폰트 ====== */
+html {
+	font-family: 'Nanum Barun Gothic', sans-serif;
+}
+
+/* ===== 닉네임 폰트 ===== */
+.chat_nickname_box {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+/*
+ * ========================================
+ *                기능 토글
+ *
+ * 원치 않는 기능을 주석처리 하시면 됩니다.
+ * ========================================
+*/
+
+/* ===== 비트 배경색 ===== */
+.chat_outer_box .chat_cheer_box::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	z-index: -1;
+	transition: all .6s ease;
+}
+
+.chat_outer_box:last-child .chat_cheer_box::after {
+	background: #f76262;
+}
+
+/* ===== 구독 배경색 ===== */
+.chat_outer_box .chat_subscribe_box::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	z-index: -1;
+	transition: all .6s ease;
+}
+
+.chat_outer_box:last-child .chat_subscribe_box::after {
+	background: #fda403;
+}
+
+/* ===== 이모트 축약 ===== */
+.chat_msg_box.image_only img.twitch_emote:nth-child(5) {
+	border-radius: 5px;
+	width: 15px;
+	height: 15px;
+	filter: contrast(0) brightness(1.91);
+	margin-left: 2px;
+	background: #000;
+	clip-path: polygon(45% 0, 55% 0, 55% 45%, 100% 45%, 100% 55%, 55% 55%,
+					55% 100%, 45% 100%, 45% 55%, 0% 55%, 0% 45%, 45% 45%);
+}
+
+.chat_msg_box.image_only img.twitch_emote:nth-child(n + 6) {
+	display: none;
+}
+
+
+/*
+ * ========================================
+ *                 Precip2
+ *
+ *     여기부터는 수정하시면 안됩니다.
+ * ========================================
+*/
+
+/* ======== 전체적인 레이아웃 ======== */
 html {
 	overflow: hidden;
+	color: white;
 }
 
 body {
@@ -16,6 +105,15 @@ body {
 }
 
 
+#background {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+/* ==== 트위치 이모티콘 및 디시콘 ==== */
 img.twitch_emote {
 	max-height: 29px;
 	vertical-align: middle;
@@ -25,13 +123,18 @@ img.dccon {
 	max-height: 100px;
 }
 
-
-@keyframes SubsAni {
-	50% {
-		color: rgba(255, 255, 255, .5);
-	}
+/* 이모티콘만 포함된 경우 */
+.chat_msg_box.image_only {
+	display: flex;
 }
 
+.chat_msg_box.image_only img.twitch_emote {
+	max-height: 50px;
+	height: 50px;
+	position: relative;
+}
+
+/* ======== 구독 및 비트 후원 ======== */
 .chat_subscribe_box,
 .chat_cheer_box {
 	text-align: center;
@@ -50,26 +153,14 @@ img.dccon {
 	vertical-align: middle;
 }
 
-
-#background {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
+@keyframes SubsAni {
+	50% {
+		color: rgba(255, 255, 255, .5);
+	}
 }
 
 
-html {
-	font-family: 'Nanum Barun Gothic', sans-serif;
-	color: white;
-}
-
-.chat_nickname_box {
-	font-size: 0.8em;
-	font-family: 'Noto Sans KR', sans-serif;
-}
-
+/* ===== 채팅 버블 및 애니메이션 ===== */
 .chat_outer_box {
 	position: relative;
 	z-index: 0;
@@ -86,12 +177,7 @@ html {
 	transition: all .6s linear;
 }
 
-.chat_nickname_box,
-.chat_badge_box {
-	display: inline-block;
-	font-weight: 700;
-}
-
+/* 마지막 채팅 강조 */
 .chat_outer_box:not(:last-child) .chat_nickname_box {
 	color: #00bcd4 !important;
 }
@@ -109,34 +195,12 @@ html {
 	color: rgba(0, 0, 0, .5) !important;
 }
 
-.chat_outer_box:last-child .chat_cheer_box::after {
-	content: '';
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #f76262;
-	z-index: -1;
-}
-
-.chat_outer_box:last-child .chat_subscribe_box::after {
-	content: '';
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #fda403;
-	z-index: -1;
-}
-
+/* 최근 채팅은 불투명하게 */
 .chat_outer_box:nth-last-child(-n + 3) {
 	opacity: 1;
 }
 
+/* ======= 사용자 이름 및 배지 ======= */
 .chat_upper_box {
 	margin-right: 5px;
 	margin-bottom: 3px;
@@ -146,6 +210,7 @@ html {
 }
 
 .chat_nickname_box {
+	font-size: 0.8em;
 	margin-top: 4px;
 }
 
@@ -154,6 +219,12 @@ html {
 	margin-top: 4px;
 }
 
+.chat_nickname_box,
+.chat_badge_box {
+	display: inline-block;
+	font-weight: 700;
+}
+/* =========== 채팅 메시지 =========== */
 .chat_outer_box .chat_msg_box,
 .chat_lower_box {
 	clear: right;
@@ -165,36 +236,7 @@ html {
 	max-height: 100px;
 	padding: 3px;
 }
-
-.chat_msg_box.image_only {
-	display: flex;
-}
-
-.chat_msg_box.image_only img.twitch_emote {
-	max-height: 50px;
-	height: 50px;
-	position: relative;
-}
-
-.chat_msg_box.image_only img.twitch_emote:nth-child(5) {
-	border-radius: 5px;
-	width: 15px;
-	height: 15px;
-	filter: contrast(0) brightness(1.91);
-	margin-left: 2px;
-	background: #000;
-	clip-path: polygon(45% 0, 55% 0, 55% 45%, 100% 45%, 100% 55%, 55% 55%,
-					55% 100%, 45% 100%, 45% 55%, 0% 55%, 0% 45%, 45% 45%);
-}
-
-.chat_msg_box.image_only img.twitch_emote:nth-child(n + 6) {
-	display: none;
-}
-
-.chat_msg_box.image_only::after:nth-child(n + 6) {
-	content: '+';
-}
-
+/* === 클립을 포함하고 있는 메시지 === */
 .clip_included .chat_msg_box {
 	max-height: 160px;
 }
