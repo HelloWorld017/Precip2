@@ -1,0 +1,229 @@
+﻿/* 폰트 로드 */
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://cdn.rawgit.com/HelloWorld017/NanumBarunGothic/master/nanumbarungothic.css);
+
+html {
+	overflow: hidden;
+}
+
+body {
+	position: absolute;
+	margin: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
+
+img.twitch_emote {
+	max-height: 29px;
+	vertical-align: middle;
+}
+
+img.dccon {
+	max-height: 100px;
+}
+
+
+@keyframes SubsAni {
+	50% {
+		color: rgba(255, 255, 255, .5);
+	}
+}
+
+.chat_subscribe_box,
+.chat_cheer_box {
+	text-align: center;
+	animation: SubsAni 6 2s ease;
+}
+
+
+.chat_cheer_text {
+	color: #00bcd4;
+	display: inline-block;
+}
+
+
+.chat_cheer_text img.cheer_icon {
+	max-height: 1em;
+	vertical-align: middle;
+}
+
+
+#background {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+
+html {
+	font-family: 'Nanum Barun Gothic', sans-serif;
+	color: white;
+}
+
+.chat_nickname_box {
+	font-size: 0.8em;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.chat_outer_box {
+	position: relative;
+	z-index: 0;
+	overflow: hidden;
+	margin-top: 8px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 6px 15px;
+	opacity: .4;
+	transition: all .6s linear;
+}
+
+.chat_outer_box * {
+	transition: all .6s linear;
+}
+
+.chat_nickname_box,
+.chat_badge_box {
+	display: inline-block;
+	font-weight: 700;
+}
+
+.chat_outer_box:not(:last-child) .chat_nickname_box {
+	color: #00bcd4 !important;
+}
+
+.chat_outer_box:last-child {
+	background: #00acc1;
+}
+
+.chat_outer_box:last-child .chat_cheer_text,
+.chat_outer_box:last-child .chat_badge_box {
+	color: #f1f1f1 !important;
+}
+
+.chat_outer_box:last-child .chat_nickname_box {
+	color: rgba(0, 0, 0, .5) !important;
+}
+
+.chat_outer_box:last-child .chat_cheer_box::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #f76262;
+	z-index: -1;
+}
+
+.chat_outer_box:last-child .chat_subscribe_box::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fda403;
+	z-index: -1;
+}
+
+.chat_outer_box:nth-last-child(-n + 3) {
+	opacity: 1;
+}
+
+.chat_upper_box {
+	margin-right: 5px;
+	margin-bottom: 3px;
+	display: flex;
+	align-items: flex-start;
+	flex: 0 0 auto;
+}
+
+.chat_nickname_box {
+	margin-top: 4px;
+}
+
+.chat_badge_box {
+	margin-left: 5px;
+	margin-top: 4px;
+}
+
+.chat_outer_box .chat_msg_box,
+.chat_lower_box {
+	clear: right;
+}
+
+.chat_msg_box {
+	white-space: pre-line;
+	word-break: break-word;
+	max-height: 100px;
+	padding: 3px;
+}
+
+.chat_msg_box.image_only {
+	display: flex;
+}
+
+.chat_msg_box.image_only img.twitch_emote {
+	max-height: 50px;
+	height: 50px;
+	position: relative;
+}
+
+.chat_msg_box.image_only img.twitch_emote:nth-child(5) {
+	border-radius: 5px;
+	width: 15px;
+	height: 15px;
+	filter: contrast(0) brightness(1.91);
+	margin-left: 2px;
+	background: #000;
+	clip-path: polygon(45% 0, 55% 0, 55% 45%, 100% 45%, 100% 55%, 55% 55%,
+					55% 100%, 45% 100%, 45% 55%, 0% 55%, 0% 45%, 45% 45%);
+}
+
+.chat_msg_box.image_only img.twitch_emote:nth-child(n + 6) {
+	display: none;
+}
+
+.chat_msg_box.image_only::after:nth-child(n + 6) {
+	content: '+';
+}
+
+.clip_included .chat_msg_box {
+	max-height: 160px;
+}
+
+.chat_clip_box {
+	position: relative;
+	margin-top: 7px;
+}
+
+.chat_clip_box img {
+	height: 56px;
+	float: left;
+}
+
+.chat_clip_title {
+	line-height: 56px;
+	text-align: center;
+	white-space: pre;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.chat_clip_by {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: 0.7em;
+}
+
+.chat_clip_box.text_only {
+	text-align: center;
+}
