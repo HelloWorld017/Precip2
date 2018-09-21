@@ -1,0 +1,208 @@
+/*
+ +==========================================================+
+||                                                          ||
+||                          Precip                          ||
+||                                                          ||
+||              Minimalistic Twitch Chat Theme              ||
+||                                                          ||
+||  Styled by Khinenw (nenw.moe, github.com/HelloWorld017)  ||
+||                                                          ||
+ +==========================================================+
+*/
+
+/*
+ * ========================================
+ *                폰트 설정
+ *
+ *  폰트 URL과 폰트명을 변경하시면 됩니다.
+ * ========================================
+*/
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://cdn.rawgit.com/HelloWorld017/NanumBarunGothic/master/nanumbarungothic.css);
+
+/* ====== 전체 폰트 ====== */
+html {
+	font-family: 'Nanum Barun Gothic', sans-serif;
+}
+
+/* ===== 닉네임 폰트 ===== */
+.name {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*
+ * ========================================
+ *                변수 설정
+ *
+ *     변수 값을 변경 하실 수 있습니다.
+ * ========================================
+*/
+
+:root {
+	/* 스트리머 배경색 */
+	--active-streamer-background: #f76262;
+	
+	/* 모더레이터 배경색 */
+	--active-mod-background: #fda403;
+	
+	/* 활성화된 채팅 (마지막 채팅) */
+	--active-chat-text: #fff;
+	--active-chat-background: #00acc1;
+	--active-chat-nick: rgba(0, 0, 0, .5);
+	
+	/* 마지막이 아닌 채팅 */
+	--chat-nick: #00bcd4;
+	--chat-text: #f1f1f1;
+	
+	/* 흰 배경 때문에 채팅이 보이지 않을 때 */
+	/*
+		--chat-text: #202020;
+	*/
+}
+
+/*
+ * ========================================
+ *                 Precip
+ * ========================================
+*/
+
+/* ======== 전체적인 레이아웃 ======== */
+html {
+	overflow: hidden;
+	color: white;
+}
+
+body {
+	position: absolute;
+	margin: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
+/* ========= 트위치 이모티콘 ========= */
+.emote_wrap, img.emoticon {
+	max-height: 29px;
+	vertical-align: middle;
+}
+
+/* ============ 채팅 버블 ============ */
+#log > div {
+	position: relative;
+	margin-top: 8px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 9px 18px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	opacity: .4;
+	z-index: 0;
+	animation: animate-in .5s ease, animate-out 1s ease 300s forwards;
+	transition: all .6s linear;
+}
+
+#log > div * {
+	transition: all .6s linear;
+}
+
+.message {
+	margin-bottom: 4px;
+}
+
+/* ======= 마지막이 아닌 채팅 ======== */
+#log > div:not(:last-child) .meta {
+	color: var(--chat-nick) !important;
+}
+
+#log > div:not(:last-child) .message {
+	color: var(--chat-text);
+}
+
+/* ========== 활성화된 채팅 ========== */
+
+/* 배경색 */
+#log > div:last-child {
+	background: var(--active-chat-background);
+	opacity: 1;
+}
+
+#log > div:last-child.moderator {
+	background: var(--active-mod-background);
+}
+
+#log > div:last-child.broadcaster {
+	background: var(--active-streamer-background);
+}
+
+/* 사용자 이름 */
+#log > div:last-child .meta {
+	color: var(--active-chat-nick) !important;
+}
+
+/* 텍스트 색 */
+#log > div:last-child .message {
+	color: var(--active-chat-text) !important;
+}
+
+
+/* === 가장 최근 채팅은 불투명하게 === */
+#log > div:nth-last-child(-n + 5) {
+	opacity: 1;
+}
+
+/* ======= 사용자 이름 및 뱃지 ======= */
+.meta {
+	margin-right: 5px;
+	margin-bottom: 4px;
+	display: inline-flex;
+	align-items: flex-start;
+	flex: 0 0 auto;
+}
+
+.name {
+	font-size: 0.8em;
+	margin-top: 4px;
+}
+
+.badge {
+	max-height: 20px;
+}
+
+.badge:last-of-type {
+	margin-right: 5px;
+	margin-top: 4px;
+}
+
+.name {
+	display: inline-block;
+	font-weight: 700;
+}
+
+.colon {
+	display: none;
+}
+
+/* ============ 애니메이션 =========== */
+@keyframes animate-in {
+	0% {
+		transform: skewX(8deg);
+		opacity: 0;
+	}
+	
+	100% {
+		transform: skewX(0deg);
+		opacity: 1;
+	}
+}
+
+@keyframes animate-out {
+	0% {
+		opacity: 1;
+	}
+	
+	100% {
+		opacity: 0;
+	}
+}
