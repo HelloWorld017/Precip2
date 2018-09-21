@@ -5,7 +5,7 @@
 ![작동 화면](https://i.imgur.com/1Q7D3Sk.gif)
 
 ## 기능 (Twip)
-* 스트리머, 모더레이터의 채팅은 다른 색으로 표시
+* 스트리머, 모더레이터의 채팅은 다른 색으로 표시  
 ![스트리머](https://i.imgur.com/Dwi7NYs.png)
 
 ## 기능 (BridgeBBCC)
